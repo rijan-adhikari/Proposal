@@ -53,6 +53,24 @@
   });
   const layer = document.querySelector(".hearts");
   for(let i=0;i<18;i++){const h=document.createElement("span");h.className="heart";h.textContent=["♡","♥","✦"][i%3];h.style.left=Math.random()*100+"%";h.style.animationDuration=(10+Math.random()*12)+"s";h.style.animationDelay=(-Math.random()*18)+"s";h.style.fontSize=(12+Math.random()*18)+"px";layer.append(h);}
-  const audio = $("audio"), music = $("music");
-  music.addEventListener("click", async()=>{if(audio.paused){try{await audio.play();music.textContent="♫";}catch{}}else{audio.pause();music.textContent="♪";}});
+  // Try audible autoplay on arrival. iOS Safari may block it until a real user gesture.
+  const audio = $("audio");
+  let audioStarted = false;
+  async function startMusic() {
+    if (audioStarted || !audio) return;
+    try {
+      await audio.play();
+      audioStarted = true;
+      document.removeEventListener("pointerdown", startMusic, true);
+      document.removeEventListener("touchstart", startMusic, true);
+      document.removeEventListener("scroll", startMusic, true);
+      document.removeEventListener("keydown", startMusic, true);
+    } catch {
+      // Retry on the visitor's first interaction, as required by iOS autoplay policy.
+    }
+  }
+  startMusic();
+  ["pointerdown","touchstart","scroll","keydown"].forEach(type => {
+    document.addEventListener(type, startMusic, {capture:true,passive:true});
+  });
 })();
