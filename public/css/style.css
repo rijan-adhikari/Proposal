@@ -53,14 +53,13 @@ main{position:relative;z-index:1}
 .card h2{font-size:clamp(36px,7vw,54px)}
 .question-copy,.ending .card>p:not(.eyebrow){color:var(--muted);line-height:1.9}
 .buttons{display:flex;justify-content:center;gap:14px;align-items:center;min-height:64px;margin:30px 0 14px;position:relative}
-.buttons button,.music{border:0;border-radius:999px;padding:15px 26px;font:700 15px 'DM Sans';cursor:pointer;transition:transform .25s,box-shadow .25s}
+.buttons button{border:0;border-radius:999px;padding:15px 26px;font:700 15px 'DM Sans';cursor:pointer;transition:transform .25s,box-shadow .25s}
 .yes{background:linear-gradient(120deg,#e65d8b,#b64b8a);color:white;box-shadow:0 12px 28px #d94d7b45}
 .yes:hover{transform:translateY(-3px) scale(1.04)}
 .no{background:#fff;color:#77485e;border:1px solid #f0dce5!important}
 .no.roaming{position:absolute;transition:left .3s ease,top .3s ease}
 .card small{display:block;margin-top:24px;color:#a18493}
 .card #tease{min-height:24px;color:#bf4774;font-weight:700}
-.music{position:fixed;right:20px;top:20px;z-index:4;padding:12px 17px;background:#ffffffbd;color:#a83f68;box-shadow:0 8px 25px #63304712}
 .big-heart{font-size:70px;color:#df5686;animation:pulse 1s infinite alternate}
 @keyframes pulse{to{transform:scale(1.15)}}
 .signature{font-family:'Playfair Display',serif;font-style:italic;margin-top:24px}
