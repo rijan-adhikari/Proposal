@@ -26,21 +26,26 @@
     if (img.complete && img.naturalWidth > 0) show();
   });
 
-  function moveNo() {
-    noCount++;
-    tease.textContent = lines[(noCount - 1) % lines.length];
-    yes.style.transform = "scale(" + Math.min(1.22, 1 + noCount * .025) + ")";
+  function moveNo(recordAttempt = false) {
+    if (recordAttempt) {
+      noCount++;
+      tease.textContent = lines[(noCount - 1) % lines.length];
+      yes.style.transform = "scale(" + Math.min(1.22, 1 + noCount * .025) + ")";
+      if (localStorage.getItem("proposalAnalyticsConsent") === "yes") {
+        log("log-click",{response:"no",noClickCount:noCount});
+      }
+    }
     const area = no.parentElement.getBoundingClientRect();
     const maxX = Math.max(0, area.width - no.offsetWidth);
-    const maxY = 54;
+    const maxY = Math.max(0, area.height - no.offsetHeight);
     no.classList.add("roaming");
     no.style.left = Math.round(Math.random() * maxX) + "px";
-    no.style.top = Math.round((Math.random() - .5) * maxY) + "px";
-    if (localStorage.getItem("proposalAnalyticsConsent") === "yes") log("log-click",{response:"no",noClickCount:noCount});
+    no.style.top = Math.round(Math.random() * maxY) + "px";
   }
-  no.addEventListener("mouseenter", moveNo);
-  no.addEventListener("click", moveNo);
-  no.addEventListener("touchstart", e => { e.preventDefault(); moveNo(); }, {passive:false});
+  // Desktop hover dodges without inflating the click counter.
+  no.addEventListener("mouseenter", () => moveNo(false));
+  no.addEventListener("click", () => moveNo(true));
+  no.addEventListener("touchstart", e => { e.preventDefault(); moveNo(true); }, {passive:false});
   yes.addEventListener("click", () => {
     if (localStorage.getItem("proposalAnalyticsConsent") === "yes") log("log-click",{response:"yes",noClickCount:noCount});
     $("ending").hidden = false;
