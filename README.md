@@ -22,8 +22,8 @@ Render Free Web Services do not provide persistent disks. Visitor events and the
 
 ## Personalize
 
-- Add a photo you have permission to use at `public/assets/pranisha.jpg`.
+- Add five photos you have permission to use at these exact paths: `public/assets/pranisha-1.jpg`, `public/assets/pranisha-2.jpg`, `public/assets/pranisha-3.jpg`, `public/assets/pranisha-4.jpg`, and `public/assets/pranisha-5.jpg`. The gallery is already laid out; upload the five image files to the `public/assets/` folder.
 - Add audio you have permission to use at `public/assets/romantic-bgm.mp3`.
-- Update proposal wording in `public/index.html`.
+- Update proposal wording in `public/index.html`. The proposal letter is written in a warm, natural tone and avoids dash-heavy formatting.
 
 No external database, storage provider, or third-party hosting is used.
