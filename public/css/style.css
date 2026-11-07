@@ -74,3 +74,14 @@ main{position:relative;z-index:2}
 @media(max-width:480px){.photo-wrap{height:210px}.primary-photo .photo-wrap{height:118vw;max-height:490px}.gallery-section,.letter-section{padding-left:16px;padding-right:16px}.card{border-radius:24px}.buttons{gap:8px}.buttons button{padding:14px 18px}.letter-card{border-radius:24px}.letter-card>p:not(.eyebrow){font-size:15px}.photo-gallery{gap:12px}.photo-card{padding:8px 8px 13px;border-radius:19px}.photo-wrap{border-radius:13px}.photo-card figcaption{font-size:13px;padding-top:11px}.photo-card:after{right:13px;top:13px;width:25px;height:25px;font-size:15px}}
 @supports(height:100dvh){.hero{min-height:100dvh}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.music-gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 20% 15%,#ffdce7,#fff5f8 55%,#eee5ff);transition:opacity .65s ease,visibility .65s ease}
+.music-gate.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+.music-gate-card{width:min(100%,440px);padding:clamp(30px,7vw,52px);text-align:center;border:1px solid #fff;border-radius:30px;background:#ffffffd9;box-shadow:0 25px 90px #8b426026;backdrop-filter:blur(18px)}
+.music-gate-flower{display:block;font-size:42px;color:#d66c91;margin-bottom:12px;animation:gateFloat 3s ease-in-out infinite}
+.music-gate-card h2{font:600 clamp(32px,7vw,46px) 'Playfair Display',serif;margin:12px 0;color:var(--ink)}
+.music-gate-card>p:not(.eyebrow){color:var(--muted);line-height:1.8;font-size:15px}
+.music-gate-card button{margin-top:18px;border:0;border-radius:999px;padding:15px 28px;background:linear-gradient(120deg,#e65d8b,#b64b8a);color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 12px 28px #d94d7b45;cursor:pointer;touch-action:manipulation}
+.music-gate-card small{display:block;min-height:18px;margin-top:13px;color:#a18493}
+@keyframes gateFloat{50%{transform:translateY(-7px) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.music-gate-flower{animation:none}.music-gate{transition:none}}
