@@ -75,13 +75,25 @@ main{position:relative;z-index:2}
 @supports(height:100dvh){.hero{min-height:100dvh}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
-.music-gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 20% 15%,#ffdce7,#fff5f8 55%,#eee5ff);transition:opacity .65s ease,visibility .65s ease}
+.music-gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;overflow:hidden;padding:24px;background:radial-gradient(ellipse at 18% 18%,#ffdce7,transparent 42%),radial-gradient(ellipse at 85% 78%,#e8dcff,transparent 43%),linear-gradient(135deg,#fff7fa,#fcecf4);transition:opacity .65s ease,visibility .65s ease}
 .music-gate.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
-.music-gate-card{width:min(100%,440px);padding:clamp(30px,7vw,52px);text-align:center;border:1px solid #fff;border-radius:30px;background:#ffffffd9;box-shadow:0 25px 90px #8b426026;backdrop-filter:blur(18px)}
-.music-gate-flower{display:block;font-size:42px;color:#d66c91;margin-bottom:12px;animation:gateFloat 3s ease-in-out infinite}
-.music-gate-card h2{font:600 clamp(32px,7vw,46px) 'Playfair Display',serif;margin:12px 0;color:var(--ink)}
-.music-gate-card>p:not(.eyebrow){color:var(--muted);line-height:1.8;font-size:15px}
-.music-gate-card button{margin-top:18px;border:0;border-radius:999px;padding:15px 28px;background:linear-gradient(120deg,#e65d8b,#b64b8a);color:#fff;font:700 15px 'DM Sans',sans-serif;box-shadow:0 12px 28px #d94d7b45;cursor:pointer;touch-action:manipulation}
+.music-gate:before,.music-gate:after{content:"";position:absolute;width:min(75vw,560px);aspect-ratio:1;border:1px solid #e9a9c455;border-radius:44% 56% 63% 37%/44% 42% 58% 56%;pointer-events:none;animation:gateOrbit 18s ease-in-out infinite alternate}
+.music-gate:after{width:min(95vw,720px);border-color:#c7a9e044;border-radius:58% 42% 38% 62%/48% 58% 42% 52%;animation-duration:24s;animation-direction:alternate-reverse}
+.music-gate-card{position:relative;z-index:2;width:min(100%,470px);padding:clamp(38px,8vw,62px) clamp(25px,7vw,48px);text-align:center;border:1px solid #fff;border-radius:34px;background:linear-gradient(145deg,#ffffffed,#fff8fbe8);box-shadow:0 25px 90px #8b426026,0 0 0 8px #ffffff55;backdrop-filter:blur(18px)}
+.music-gate-flower{display:block;font-size:48px;margin-bottom:18px;filter:drop-shadow(0 7px 12px #d94d7b35);animation:gateFloat 3s ease-in-out infinite}
+.music-gate-card h2{font:600 clamp(31px,7vw,45px)/1.3 'Playfair Display',serif;margin:12px 0 25px;color:var(--ink)}
+.music-gate-card h2 em{color:var(--rose);font-weight:500;white-space:nowrap}
+.music-gate-card button{margin-top:5px;border:0;border-radius:999px;padding:15px 34px;background:linear-gradient(120deg,#e65d8b,#b64b8a);color:#fff;font:700 15px 'DM Sans',sans-serif;letter-spacing:.04em;box-shadow:0 12px 28px #d94d7b45;cursor:pointer;touch-action:manipulation;transition:transform .25s,box-shadow .25s}
+.music-gate-card button:hover{transform:translateY(-3px);box-shadow:0 16px 34px #d94d7b55}
 .music-gate-card small{display:block;min-height:18px;margin-top:13px;color:#a18493}
-@keyframes gateFloat{50%{transform:translateY(-7px) rotate(5deg)}}
-@media(prefers-reduced-motion:reduce){.music-gate-flower{animation:none}.music-gate{transition:none}}
+.gate-decoration{position:absolute;z-index:1;pointer-events:none;user-select:none;color:#d66c91;text-shadow:0 8px 22px #d94d7b25;animation:gateFloat 5s ease-in-out infinite}
+.gate-flower-one{top:13%;left:13%;font-size:clamp(30px,6vw,54px);transform:rotate(-18deg)}
+.gate-heart-one{top:23%;right:17%;font-size:clamp(34px,6vw,58px);color:#e78bab;animation-delay:-1s}
+.gate-sparkle-one{top:17%;right:31%;font-size:34px;color:#c49acb;animation-delay:-2s}
+.gate-flower-two{bottom:15%;right:13%;font-size:clamp(35px,7vw,62px);color:#c99acb;animation-delay:-2.5s}
+.gate-heart-two{bottom:23%;left:18%;font-size:30px;color:#e78bab;animation-delay:-1.5s}
+.gate-sparkle-two{bottom:17%;left:34%;font-size:38px;color:#d6a6bd;animation-delay:-3s}
+@keyframes gateFloat{50%{translate:0 -10px;rotate:5deg}}
+@keyframes gateOrbit{to{transform:rotate(24deg) scale(1.08)}}
+@media(max-width:520px){.gate-flower-one{top:9%;left:7%}.gate-heart-one{top:15%;right:7%}.gate-sparkle-one{top:28%;right:9%}.gate-flower-two{bottom:9%;right:7%}.gate-heart-two{bottom:15%;left:8%}.gate-sparkle-two{bottom:27%;left:9%}.music-gate-card{padding:38px 24px}}
+@media(prefers-reduced-motion:reduce){.music-gate-flower,.gate-decoration,.music-gate:before,.music-gate:after{animation:none}.music-gate,.music-gate-card button{transition:none}}
