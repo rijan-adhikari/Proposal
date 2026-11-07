@@ -34,7 +34,7 @@ main{position:relative}
 .photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;opacity:0;transition:transform .7s ease,opacity .3s}
 .primary-photo .photo-wrap img{object-position:center 39%}
 .photo-card:hover img{transform:scale(1.035)}
-.photo-wrap img.loaded{opacity:1}
+.photo-wrap img.loaded{opacity:1}.photo-wrap img.loaded+.photo-placeholder{display:none}
 .photo-placeholder{color:#a65a79;font:italic 17px 'Playfair Display',serif}
 .photo-card figcaption{text-align:center;padding:15px 5px 0;color:#866477;font:italic 15px 'Playfair Display',serif}
 .primary-photo figcaption{color:#a44970;font-size:16px}
