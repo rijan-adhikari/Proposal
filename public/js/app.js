@@ -58,8 +58,22 @@
   });
   const layer = document.querySelector(".hearts");
   for(let i=0;i<18;i++){const h=document.createElement("span");h.className="heart";h.textContent=["♡","♥","✦"][i%3];h.style.left=Math.random()*100+"%";h.style.animationDuration=(10+Math.random()*12)+"s";h.style.animationDelay=(-Math.random()*18)+"s";h.style.fontSize=(12+Math.random()*18)+"px";layer.append(h);}
-  // Try audible autoplay on arrival. iOS Safari may block it until a real user gesture.
+  // iOS Safari requires a user gesture before audible playback.
   const audio = $("audio");
+  const musicGate = $("musicGate");
+  const enterWithMusic = $("enterWithMusic");
+  const musicGateMessage = $("musicGateMessage");
+  enterWithMusic.addEventListener("click", async () => {
+    try {
+      await audio.play();
+      audioStarted = true;
+      musicGate.classList.add("is-leaving");
+      setTimeout(() => musicGate.remove(), 700);
+    } catch (error) {
+      musicGateMessage.textContent = "The music file could not play. Please check the MP3 file.";
+      console.error("Background audio failed:", error);
+    }
+  });
   let audioStarted = false;
   async function startMusic() {
     if (audioStarted || !audio) return;
