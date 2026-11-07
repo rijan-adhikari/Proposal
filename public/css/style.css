@@ -8,7 +8,20 @@ body{margin:0;color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidde
 @keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
 main{position:relative;z-index:2}
 .hero,.question,.ending{min-height:88svh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:90px 22px}
-.hero{min-height:100svh}
+.hero{min-height:100svh;position:relative;isolation:isolate;overflow:hidden}
+.hero:before{content:"";position:absolute;z-index:-1;width:min(78vw,650px);aspect-ratio:1;border:1px solid #e8a8c333;border-radius:50%;box-shadow:0 0 0 28px #fff7fa55,0 0 0 58px #e8a8c322;pointer-events:none}
+.hero:after{content:"";position:absolute;z-index:-1;bottom:9%;width:min(70vw,560px);height:1px;background:linear-gradient(90deg,transparent,#dfa0b955,transparent)}
+.hero-deco{position:absolute;z-index:0;pointer-events:none;user-select:none;color:#d66c91;text-shadow:0 8px 24px #d94d7b25;animation:heroFloat 5s ease-in-out infinite}
+.hero-deco-left{left:12%;top:27%;font-size:clamp(38px,6vw,66px);color:#e18bab;transform:rotate(-16deg)}
+.hero-deco-right{right:14%;top:24%;font-size:clamp(34px,5vw,54px);color:#bda0d0;animation-delay:-1.7s}
+.hero-deco-top{left:23%;bottom:23%;font-size:clamp(27px,4vw,42px);color:#d9a1b7;animation-delay:-2.5s}
+.hero-deco-bottom{right:23%;bottom:20%;font-size:clamp(24px,4vw,38px);color:#e6a0b9;animation-delay:-3.2s}
+.hero-orbit{position:absolute;z-index:-1;width:12px;height:12px;border-radius:50%;background:#e9a7c4;box-shadow:0 0 0 8px #e9a7c422,0 0 28px #d94d7b55;pointer-events:none}
+.hero-orbit-one{top:34%;right:27%}
+.hero-orbit-two{bottom:31%;left:28%;width:8px;height:8px;background:#c7a8d9;box-shadow:0 0 0 8px #c7a8d922,0 0 25px #c7a8d955}
+@keyframes heroFloat{50%{translate:0 -12px;rotate:7deg}}
+@media(max-width:600px){.hero-deco-left{left:5%;top:22%}.hero-deco-right{right:6%;top:19%}.hero-deco-top{left:8%;bottom:17%}.hero-deco-bottom{right:9%;bottom:14%}.hero-orbit-one{right:15%;top:31%}.hero-orbit-two{left:15%;bottom:27%}}
+@media(prefers-reduced-motion:reduce){.hero-deco{animation:none}}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;color:#b54b72}
 .intro-flower{font-size:42px;color:#d66c91;margin:14px 0 2px}
 .hero h1,.card h2,.section-heading h2,.letter-card h2{font:600 clamp(38px,7vw,64px) 'Playfair Display',serif;margin:10px 0}
