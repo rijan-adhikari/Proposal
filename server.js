@@ -14,6 +14,7 @@ const isProduction = process.env.NODE_ENV === "production";
 // A fresh signing secret is generated automatically at each boot. Existing admin sessions
 // are invalidated on restart; no manual secret configuration is needed.
 const sessionSecret = crypto.randomBytes(48).toString("hex");
+process.env.ANALYTICS_SALT = crypto.randomBytes(32).toString("hex");
 if (isProduction) app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use(helmet({
