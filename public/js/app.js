@@ -41,7 +41,7 @@
     $("ending").scrollIntoView({behavior:"smooth"});
     document.querySelector(".question").style.display = "none";
     document.querySelector(".hero").style.display = "none";
-    for(let i=0;i<34;i++){const h=document.createElement("span");h.textContent="♥";h.className="heart";h.style.left=Math.random()*100+"%";h.style.animationDuration=(5+Math.random()*7)+"s";h.style.fontSize=(12+Math.random()*20)+"px";$("hearts")?.append(h);}
+    for(let i=0;i<34;i++){const h=document.createElement("span");h.textContent="♥";h.className="heart";h.style.left=Math.random()*100+"%";h.style.animationDuration=(5+Math.random()*7)+"s";h.style.fontSize=(12+Math.random()*20)+"px";layer.append(h);}
   });
   const layer = document.querySelector(".hearts");
   for(let i=0;i<18;i++){const h=document.createElement("span");h.className="heart";h.textContent=["♡","♥","✦"][i%3];h.style.left=Math.random()*100+"%";h.style.animationDuration=(10+Math.random()*12)+"s";h.style.animationDelay=(-Math.random()*18)+"s";h.style.fontSize=(12+Math.random()*18)+"px";layer.append(h);}
