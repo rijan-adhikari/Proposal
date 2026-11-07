@@ -3,10 +3,10 @@
 html{scroll-behavior:smooth}
 body{margin:0;color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden;background:#fff7fa}
 .ambient{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 15%,#ffdce7,transparent 48%),radial-gradient(ellipse at 85% 65%,#e9ddff,transparent 48%),linear-gradient(135deg,#fff7fa,#fcecf4)}
-.hearts{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.hearts{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .heart{position:absolute;bottom:-30px;animation:rise linear infinite;opacity:.35}
 @keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
-main{position:relative}
+main{position:relative;z-index:1}
 .hero,.question,.ending{min-height:88svh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:90px 22px}
 .hero{min-height:100svh}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;color:#b54b72}
@@ -34,7 +34,11 @@ main{position:relative}
 .photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;opacity:0;transition:transform .7s ease,opacity .3s}
 .primary-photo .photo-wrap img{object-position:center 39%}
 .photo-card:hover img{transform:scale(1.035)}
-.photo-wrap img.loaded{opacity:1}.photo-wrap img.loaded+.photo-placeholder{display:none}
+.photo-wrap img.loaded{opacity:1;animation:photoDrift 7s ease-in-out infinite alternate;will-change:transform}.photo-wrap img.loaded+.photo-placeholder{display:none}
+@keyframes photoDrift{0%{transform:scale(1.015) translate3d(0,0,0)}100%{transform:scale(1.055) translate3d(0,-7px,0)}}
+.photo-left .photo-wrap img.loaded{animation-duration:8.5s;animation-delay:-2s}
+.photo-right .photo-wrap img.loaded{animation-duration:9s;animation-delay:-4s}
+.primary-photo .photo-wrap img.loaded{animation-duration:7.5s}
 .photo-placeholder{color:#a65a79;font:italic 17px 'Playfair Display',serif}
 .photo-card figcaption{text-align:center;padding:15px 5px 0;color:#866477;font:italic 15px 'Playfair Display',serif}
 .primary-photo figcaption{color:#a44970;font-size:16px}
@@ -69,4 +73,4 @@ main{position:relative}
 .consent-actions button+button{background:#f5eaf0;color:#75445a}
 @media(max-width:760px){.photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;padding:8px 2px 24px}.primary-photo{grid-column:1/-1;grid-row:1;transform:none;width:min(100%,430px);justify-self:center}.primary-photo:hover{transform:translateY(-4px)}.photo-left{transform:rotate(-2deg)}.photo-right{transform:rotate(2deg)}.photo-left:hover{transform:rotate(0)}.photo-right:hover{transform:rotate(0)}.photo-wrap{height:260px}.primary-photo .photo-wrap{height:min(118vw,510px)}}
 @media(max-width:480px){.photo-wrap{height:210px}.primary-photo .photo-wrap{height:118vw;max-height:490px}.gallery-section,.letter-section{padding-left:16px;padding-right:16px}.card{border-radius:24px}.buttons{gap:8px}.buttons button{padding:14px 18px}.letter-card{border-radius:24px}.letter-card>p:not(.eyebrow){font-size:15px}.photo-gallery{gap:12px}.photo-card{padding:8px 8px 13px;border-radius:19px}.photo-wrap{border-radius:13px}.photo-card figcaption{font-size:13px;padding-top:11px}.photo-card:after{right:13px;top:13px;width:25px;height:25px;font-size:15px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@supports(height:100dvh){.hero{min-height:100dvh}}\n@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
