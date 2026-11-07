@@ -2,11 +2,11 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden;background:#fff7fa}
-.ambient{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 15%,#ffdce7,transparent 48%),radial-gradient(ellipse at 85% 65%,#e9ddff,transparent 48%),linear-gradient(135deg,#fff7fa,#fcecf4)}
-.hearts{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.ambient{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 15% 15%,#ffdce7,transparent 48%),radial-gradient(ellipse at 85% 65%,#e9ddff,transparent 48%),linear-gradient(135deg,#fff7fa,#fcecf4)}
+.hearts{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
 .heart{position:absolute;bottom:-30px;animation:rise linear infinite;opacity:.35}
 @keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
-main{position:relative;z-index:1}
+main{position:relative;z-index:2}
 .hero,.question,.ending{min-height:88svh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:90px 22px}
 .hero{min-height:100svh}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;color:#b54b72}
