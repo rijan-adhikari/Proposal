@@ -20,6 +20,12 @@
   $("accept").addEventListener("click", () => { localStorage.setItem("proposalAnalyticsConsent","yes"); consent.hidden = true; log("log-visit"); });
   $("decline").addEventListener("click", () => { localStorage.setItem("proposalAnalyticsConsent","no"); consent.hidden = true; });
 
+  document.querySelectorAll(".photo-wrap img").forEach(img => {
+    const show = () => img.classList.add("loaded");
+    img.addEventListener("load", show);
+    if (img.complete && img.naturalWidth > 0) show();
+  });
+
   function moveNo() {
     noCount++;
     tease.textContent = lines[(noCount - 1) % lines.length];
@@ -41,6 +47,8 @@
     $("ending").scrollIntoView({behavior:"smooth"});
     document.querySelector(".question").style.display = "none";
     document.querySelector(".hero").style.display = "none";
+    document.querySelector(".gallery-section").style.display = "none";
+    document.querySelector(".letter-section").style.display = "none";
     for(let i=0;i<34;i++){const h=document.createElement("span");h.textContent="♥";h.className="heart";h.style.left=Math.random()*100+"%";h.style.animationDuration=(5+Math.random()*7)+"s";h.style.fontSize=(12+Math.random()*20)+"px";layer.append(h);}
   });
   const layer = document.querySelector(".hearts");
